@@ -1,13 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
-variable "prefix" {
-  type = string
-}
-
-variable "instances" {
-  type = number
-}
 
 required_providers {
   random = {
@@ -19,6 +9,14 @@ required_providers {
     source  = "hashicorp/null"
     version = "~> 3.2.2"
   }
+}
+
+variable "prefix" {
+  type = string
+}
+
+variable "instances" {
+  type = number
 }
 
 provider "random" "this" {}
@@ -47,9 +45,4 @@ component "nulls" {
   providers = {
     null = provider.null.this
   }
-}
-
-output "testing" {
-  type  = string
-  value = component.pet.name
 }
